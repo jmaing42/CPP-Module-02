@@ -20,3 +20,12 @@ ex02/*
 !ex02/main.cpp
 !ex02/Fixed.hpp
 !ex02/Fixed.cpp
+
+ex03/*
+!ex03/Makefile
+!ex03/main.cpp
+!ex03/Fixed.hpp
+!ex03/Fixed.cpp
+!ex03/Point.hpp
+!ex03/Point.cpp
+!ex03/bsp.cpp
