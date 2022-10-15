@@ -1,9 +1,13 @@
 #include "Fixed.hpp"
 
 #include <iostream>
+#include <ostream>
 
 const int Fixed::FRACTIONAL_BITS = 8;
 
+Fixed::Fixed(int value) : value(value * (1 << Fixed::FRACTIONAL_BITS)) {
+  std::cout << "Constructor called" << std::endl;
+}
 Fixed::Fixed(float value) : value(value * (1 << Fixed::FRACTIONAL_BITS)) {
   std::cout << "Constructor called" << std::endl;
 }
@@ -24,4 +28,15 @@ int Fixed::getRawBits(void) const {
 void Fixed::setRawBits(int raw) {
   std::cout << "setRawBits member function called" << std::endl;
   this->value = raw;
+}
+float Fixed::toFloat(void) const {
+  return this->value / (float)(1 << Fixed::FRACTIONAL_BITS);
+}
+int Fixed::toInt(void) const {
+  return this->value / (1 << Fixed::FRACTIONAL_BITS);
+}
+
+std::ostream &operator<<(std::ostream &os, const Fixed &fixed) {
+  os << fixed.toFloat();
+  return os;
 }
