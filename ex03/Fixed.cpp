@@ -61,16 +61,26 @@ bool Fixed::operator>=(const Fixed &other) const {
   return this->value >= other.value;
 }
 Fixed Fixed::operator+(const Fixed &other) const {
-  return Fixed(this->toFloat() + other.toFloat());
+  Fixed result(0);
+  result.value = this->value + other.value;
+  return result;
 }
 Fixed Fixed::operator-(const Fixed &other) const {
-  return Fixed(this->toFloat() - other.toFloat());
+  Fixed result(0);
+  result.value = this->value - other.value;
+  return result;
 }
 Fixed Fixed::operator*(const Fixed &other) const {
-  return Fixed(this->toFloat() * other.toFloat());
+  Fixed result(0);
+  result.value = (this->value * other.value) >> Fixed::FRACTIONAL_BITS;
+  return result;
 }
 Fixed Fixed::operator/(const Fixed &other) const {
-  return Fixed(this->toFloat() / other.toFloat());
+  Fixed result(0);
+  result.value =
+      (((static_cast<long long>(this->value)) << Fixed::FRACTIONAL_BITS) /
+       static_cast<long long>(other.value));
+  return result;
 }
 Fixed &Fixed::operator++() {
   this->value++;
