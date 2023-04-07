@@ -72,7 +72,9 @@ Fixed Fixed::operator-(const Fixed &other) const {
 }
 Fixed Fixed::operator*(const Fixed &other) const {
   Fixed result(0);
-  result.value = (this->value * other.value) >> Fixed::FRACTIONAL_BITS;
+  result.value = (static_cast<long long>(this->value) *
+                  static_cast<long long>(other.value)) >>
+                 Fixed::FRACTIONAL_BITS;
   return result;
 }
 Fixed Fixed::operator/(const Fixed &other) const {
