@@ -18,21 +18,3 @@ bool bsp(const Point a, const Point b, const Point c, const Point point) {
   const bool CPA = dir(PC, PA);
   return APB == BPC && BPC == CPA;
 }
-
-// #include "Point.hpp"
-
-// static Fixed sign(const Point &a, const Point &b, const Point &c) {
-//   return (a.getX() - c.getX()) * (b.getY() - c.getY()) -
-//          (b.getX() - c.getX()) * (a.getY() - c.getY());
-// }
-
-// bool bsp(const Point a, const Point b, const Point c, const Point point) {
-//   const Fixed signAB = sign(point, a, b);
-//   const Fixed signBC = sign(point, b, c);
-//   const Fixed signCA = sign(point, c, a);
-
-//   const bool negative = (signAB < 0) || (signBC < 0) || (signCA < 0);
-//   const bool positive = (signAB > 0) || (signBC > 0) || (signCA > 0);
-
-//   return !(negative && positive);
-// }
